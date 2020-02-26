@@ -14,9 +14,9 @@
                                  @@click='setbitem(@json($item))'
                                  style="@if(($i + 1) % 2 == 0 && $r == 0) margin-bottom: 1rem; @elseif($r > 0) margin-top: -4px; @endif"
                                  >
-                                <div class="p-3" id="{{$item->id}}">{{$item->team->name ?? $item->type}}</div>
+                                <div class="p-1" id="{{$item->id}}">{{$item->team->name ?? $item->type}}</div>
                                 @if($item->score >= 0)
-                                    <div class="border-l border-black px-3">
+                                    <div class="border-l border-black px-1">
                                         <div class="flex items-center justify-center text-black">{{ $item->score }}</div>
                                     </div>
                                     {{-- <div class="bg-black p-3 text-white hide-print" >{{ $item->score }}</div> --}}
