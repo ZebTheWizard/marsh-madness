@@ -1,0 +1,226 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);html,
+body {
+  background-color: #0ba27f;
+  background-image: url(/images/papyrus.png?03a947bc820e7551a3ab8b044a5f5a46);
+  background-attachment: fixed;
+  background-size: 33%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  position: relative;
+}
+
+.item.left {
+  flex-direction: row-reverse;
+  --child-left: auto;
+  --child-right: -1px;
+  --child-direction: row-reverse;
+}
+
+.item.stick-left .content::before {
+  content: "";
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.item.stick-right .content::after {
+  content: "";
+  right: 0;
+  transform: translateX(100%);
+}
+
+.item.right {
+  flex-direction: row;
+  --child-left: -1px;
+  --child-right: auto;
+  --child-direction: row;
+}
+
+.item .content {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.item .content p {
+  padding: 20px;
+  margin: 0;
+  background-color: Beige;
+}
+
+.item .content::before,
+.item .content::after {
+  position: absolute;
+  content: none;
+  width: 21px;
+  height: 2px;
+  top: 50%;
+  background-color: #fff;
+}
+
+.item .children .item {
+  flex-direction: var(--child-direction) !important;
+}
+
+.item .children .item::after {
+  content: "";
+  width: 2px;
+  height: 50%;
+  background: white;
+  position: absolute;
+  right: var(--child-right);
+  left: var(--child-left);
+  top: 0;
+  bottom: auto;
+}
+
+.item .children .item:first-of-type::after {
+  bottom: 0;
+  top: auto;
+}
+
+.conf-heading {
+  padding: 1rem;
+  color: white;
+  width: 20%;
+  margin: 0px;
+  text-align: center;
+  font-size: 3rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  position: relative;
+}
+
+.conf-heading > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.conf:nth-of-type(even) .conf-heading > p {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.conf:nth-of-type(odd) .conf-heading > p {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.conf {
+  display: flex;
+  flex-direction: row;
+  margin-top: -1px;
+}
+
+.conf.reverse {
+  flex-direction: row-reverse;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-around;
+  position: relative;
+  align-items: center;
+  width: 15%;
+}
+
+.round-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.conf .round:nth-of-type(even) .round-bg {
+  opacity: 0.3;
+}
+
+.conf.reverse .round:nth-of-type(odd) .round-bg {
+  opacity: 0.3;
+}
+
+.conf.reverse .round:nth-of-type(even) .round-bg {
+  opacity: 0.1;
+}
+
+.round > .team {
+  margin: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  width: 95%;
+}
+
+.reverse .round > .team {
+  flex-direction: row-reverse;
+}
+
+.team > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 15px;
+  font-size: 0.7rem;
+}
+
+.reverse .team > div {
+  justify-content: flex-end;
+}
+
+.team.tbd,
+.team.dnf,
+.team.bye {
+  color: black;
+  opacity: 0.3;
+}
+
+.team.tbd {
+  background: #ddd;
+}
+
+.team.dnf {
+  background: #f88;
+}
+
+.team.bye {
+  background: #88f;
+}
+
+.hide-screen {
+  display: none !important;
+}
+
+@media print {
+  /* All your print styles go here */
+
+  * {
+    visibility: hidden;
+  }
+
+  .show-print,
+  .show-print * {
+    visibility: visible;
+  }
+
+  .hide-print {
+    display: none !important;
+  }
+
+  .hide-screen {
+    display: block !important;
+  }
+}
+
